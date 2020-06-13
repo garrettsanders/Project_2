@@ -93,7 +93,7 @@ function yTextRefresh() {
   console.log(yTextRefresh);
 
 //Points
-  yText
+yText
   .append("text")
   .attr("y", -30)
   .attr("data-name", "PTS")
@@ -106,18 +106,18 @@ yText
   .append("text")
   .attr("y", 0)
   .attr("data-name", "TRB")
-  .attr("data-aixs", "y")
+  .attr("data-axis", "y")
   .attr("class", "aText inactive y")
   .text("Total Rebounds Per Game");
 
 //Assists
 yText
-.append("text")
-.attr("y", 30)
-.attr("data-name", "AST")
-.attr("data-aixs", "y")
-.attr("class", "aText inactive y")
-.text("Assits Per Game");
+  .append("text")
+  .attr("y", 30)
+  .attr("data-name", "AST")
+  .attr("data-axis", "y")
+  .attr("class", "aText inactive y")
+  .text("Assits Per Game");
 
 //Import csv
 d3.csv("NBA_Top_50.csv").then(function(data) {
@@ -384,7 +384,7 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
   function resize() {
     width = parseInt(d3.select("chLine").style("width"));
     height = width = width / 3.9;
-    leftTextY = (height + labelArea) / 2 -labelArea;
+    leftTextY = (height + labelArea) / 2 - labelArea;
 
     svg.attr("width", width).attr("height", height);
 
@@ -432,5 +432,5 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
   }
 
 
-};
+}
 
