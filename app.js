@@ -132,6 +132,8 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
 
     var curX = "PTS";
     var curY = "Ratings";
+    var curA = "AST"
+    var curR = "TRB"
 
     var xMin;
     var xMax;
@@ -147,11 +149,20 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
 
         var playerName = "<div>" + d.Player + "</div>";
         
-        var theY = "<div>" + curY + ": " + d[curY] + "%</div>";
+        var theY = "<div>" + curY + ": " + d[curY] + "</div>";
         
         if (curX === "PTS") {
           
-          theX = "<div>" + curX + ": " + d[curX] + "%</div>";
+          theX = "<div>" + curX + ": " + d[curX] + "</div>";
+        }
+
+        if (curA === "AST") {
+          theA = "<div>" + curA + ": " + d[curA] + "</div>";
+
+        }
+
+        if (curR === "TRB") {
+          theR = "<div>" + curR + ": " + d[curR] + "</div>";
         }
         else {
         
@@ -162,7 +173,7 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
             "</div>";
         }
         // Display what we capture.
-        return playerName + theX + theY;
+        return playerName + theX + theY + theA + theR;
       });
     // Call the toolTip function.
     svg.call(toolTip);
