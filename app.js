@@ -1,10 +1,10 @@
 var width = parseInt(d3.select("#chLine").style("width"));
 
-var height = width - width / 3.9;
+var height = width - width / 3;
 
 var margin = 20;
 
-var labelArea = 90;
+var labelArea = 110;
 
 var tPadBot = 30;
 var tPadLeft = 30;
@@ -18,7 +18,7 @@ var svg = d3
 
 var circRadius;
 function crGet() {
-    if (width <= 530) {
+    if (width <= 510) {
         circRadius = 5;
     }
     else {
@@ -30,7 +30,7 @@ crGet();
 //Labels for Axis
 
 //Bottom Axis
-svg.append("g").attr("Class", "xText");
+svg.append("g").attr("class", "xText");
 
 var xText = d3.select(".xText");
 
@@ -104,7 +104,7 @@ function yTextRefresh() {
 //Rebounds
 yText
   .append("text")
-  .attr("x", 0)
+  .attr("y", 0)
   .attr("data-name", "TRB")
   .attr("data-aixs", "y")
   .attr("class", "aText inactive y")
@@ -143,7 +143,7 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
     var toolTip = d3
     .tip()
     .attr("class", "d3-tip")
-    .offset([40, -60])
+    .offset([30, -50])
     .html(function(d) {
         var theX;
 
@@ -166,10 +166,10 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
         }
         else {
         
-          theX = "<div>" +
-            curX +
+          theY = "<div>" +
+            curY +
             ": " +
-            parseFloat(d[curX]).toLocaleString("en") +
+            parseFloat(d[curY]).toLocaleString("en") +
             "</div>";
         }
         // Display what we capture.
@@ -318,7 +318,7 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
 
           svg.select(".xAxis").transition().duration(300).call(xAxis);
 
-          d3.selectAll("cirlce").each(function() {
+          d3.selectAll("circle").each(function() {
             d3 
               .select(this)
               .transition()
@@ -342,7 +342,8 @@ d3.csv("NBA_Top_50.csv").then(function(data) {
         labelChange(axis, self);
       }
       else {
-        curY = name;yMinMax();
+        curY = name; 
+        yMinMax();
 
         yScale.domain([yMin, yMax]);
 
